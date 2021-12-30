@@ -1,0 +1,176 @@
+<html>
+
+<head>
+    <title>{% if Resume_Info.full_name %}{{Resume_Info.full_name}}'s Resume {% endif %}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fafafa;
+            color: rgba(182, 3, 3, 0.75);
+        }
+        
+        h1 {
+            color: rgba(172, 12, 12, 0.9);
+        }
+        
+        h1,
+        p {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px 24px;
+        }
+        
+        .line-break {
+            width: 100%;
+            height: 1px;
+            margin: 16px auto;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .resume {
+            border-radius: 8px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 48px auto;
+            padding: 16px 0px;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.14);
+        }
+        
+        .resume-group {
+            box-sizing: border-box;
+            padding: 8px 0px;
+            width: 100%;
+            display: flex;
+            border-left: 3px solid transparent;
+            transition: 0.2s;
+        }
+        
+        .resume-group:hover {
+            border-left: 3px solid #520dc2;
+        }
+        
+        .left-col {
+            width: 35%;
+        }
+        
+        .right-col {
+            width: 65%;
+        }
+        
+        .instructions {
+            opacity: 0.5;
+            text-align: center;
+            font-size: 0.8rem;
+            margin: 16px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume">
+        {% if Resume_Info.full_name %}
+        <h1>{{Resume_Info.full_name}}</h1>
+
+        {% endif %} {% if Resume_Info.email %}
+        <p>{{Resume_Info.email}}</p>
+
+        {% endif %} {% if Resume_Info.phone %}
+        <p>{{Resume_Info.phone}}</p>
+
+        {% endif %}{% if Resume_Info.address %}
+        <p>{{Resume_Info.address}}</p>
+
+        {% endif %}
+        <div class="line-break"></div>
+        {% if Resume_Info.about_you%}
+
+        <div class="resume-group">
+            <div class="left-col">
+                <p>ABOUT ME</p>
+            </div>
+            <div class="right-col">
+                <p>{{Resume_Info.about_you}}</p>
+            </div>
+        </div>
+
+        {% endif %} {% if Resume_Info.career %}
+        <div class="resume-group">
+            <div class="left-col">
+                <p>CAREER OBJECTIVES</p>
+            </div>
+
+            <div class="right-col">
+                <p>{{Resume_Info.career}}</p>
+            </div>
+        </div>
+
+        {% endif %} {% if Resume_Info.education %}
+        <div class="resume-group">
+            <div class="left-col">
+                <p>EDUCATION</p>
+            </div>
+            <div class="right-col">
+                <p>{{Resume_Info.education}}</p>
+            </div>
+        </div>
+
+        {% endif %}
+        <div class="resume-group">
+            <div class="left-col">
+                <p>EMPLOYMENT EXPERIENCE</p>
+            </div>
+            <div class="right-col">
+                <p></p>
+            </div>
+        </div>
+
+        {% if Resume_Info.job_1__start %}
+        <div class="resume-group">
+            <div class="left-col">
+                <p>{{Resume_Info.job_1__start}} to {{Resume_Info.job_1__end}}</p>
+            </div>
+            <div class="right-col">
+                <p>{{Resume_Info.job_1__details}}</p>
+            </div>
+        </div>
+
+        {% endif %} {% if Resume_Info.job_2__start %}
+        <div class="resume-group">
+            <div class="left-col">
+                <p>{{Resume_Info.job_2__start}} to {{Resume_Info.job_2__end}}</p>
+            </div>
+            <div class="right-col">
+                <p>{{Resume_Info.job_2__details}}</p>
+            </div>
+        </div>
+
+        {% endif %} {% if Resume_Info.job_3__start %}
+        <div class="resume-group">
+            <div class="left-col">
+                <p>{{Resume_Info.job_3__start}} to {{Resume_Info.job_3__end}}</p>
+            </div>
+            <div class="right-col">
+                <p>{{Resume_Info.job_3__details}}</p>
+            </div>
+        </div>
+
+
+        {% endif %}
+        <div class="resume-group">
+            <div class="left-col">
+                <p>REFERENCES</p>
+            </div>
+            <div class="right-col">
+                <p>{% if Resume_Info.references %}{{Resume_Info.references}}{% else %}Available upon request{% endif %}</p>
+            </div>
+        </div>
+    </div>
+    <div class="instructions">Ctrl + P and "Save As PDF" to make a copy of this resume</div>
+
+</body>
+
+</html>
